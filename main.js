@@ -90,3 +90,24 @@ const filmek = [
     "rating": 5
   }
 ];
+filmek.forEach(film => {
+  const table = document.getElementById("movieTable");
+  const row = document.createElement("tr");
+  const title = document.createElement("td");
+  title.textContent = film.title;
+  row.appendChild(title);
+
+  const year = document.createElement("td");
+  year.textContent = film.year;
+  row.appendChild(year);
+
+  const genre = document.createElement("td");
+  genre.textContent = film.genre;
+  row.appendChild(genre);
+
+  const rating = document.createElement("td");
+  rating.textContent = film.rating;
+  row.appendChild(rating);
+  
+  table.appendChild(row);
+});
