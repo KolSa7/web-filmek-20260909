@@ -107,7 +107,10 @@ filmek.forEach(film => {
 
   const rating = document.createElement("td");
   rating.textContent = film.rating;
+  if (film.rating < 3) {
+    rating.classList.add("low-rating");
+  }
   row.appendChild(rating);
-  
+
   table.appendChild(row);
 });
