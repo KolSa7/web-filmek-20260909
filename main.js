@@ -91,31 +91,39 @@ const filmek = [
   }
 ];
 filmek.forEach(film => {
+  addMovie(film.title, film.year, film.genre, film.rating);
+});
+function createMovie() {
+    let title=document.getElementById("title").value();
+    let year=parseInt(document.getElementById("year").value());
+    let genre=document.getElementById("genre").value();
+    let rating=parseInt(document.getElementById("rating").value());
+    addMovie(title, year, genre, rating);
+}
+function addMovie(title, year, genre, rating) {
   const table = document.getElementById("movieTable");
   const row = document.createElement("tr");
-  const title = document.createElement("td");
-  title.textContent = film.title;
-  row.appendChild(title);
+  const titleC = document.createElement("td");
+  titleC.textContent = title;
+  row.appendChild(titleC);
 
-  const year = document.createElement("td");
-  year.textContent = film.year;
-  row.appendChild(year);
+  const yearC = document.createElement("td");
+  yearC.textContent = year;
+  row.appendChild(yearC);
 
-  const genre = document.createElement("td");
-  genre.textContent = film.genre;
-  row.appendChild(genre);
+  const genreC = document.createElement("td");
+  genreC.textContent = genre;
+  row.appendChild(genreC);
 
-  const rating = document.createElement("td");
-  rating.textContent = film.rating;
-  /*if (film.rating < 3) {
-    rating.classList.add("low-rating");
-  }*/
+  const ratingC = document.createElement("td");
+  ratingC.textContent = rating;
   let stars = "";
-  for (let i = 0; i < film.rating; i++) {
+  for (let i = 0; i < rating; i++) {
     stars += "★";
   }
-  rating.textContent = stars;
-  row.appendChild(rating);
-
+  ratingC.textContent = stars;
+  row.appendChild(ratingC);
   table.appendChild(row);
-});
+}
+
+
