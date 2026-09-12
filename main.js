@@ -91,38 +91,42 @@ const filmek = [
   }
 ];
 filmek.forEach(film => {
-  addMovie(film.title, film.year, film.genre, film.rating);
+  addMovie(film);
 });
 function createMovie() {
-    let title=document.getElementById("title").value();
-    let year=parseInt(document.getElementById("year").value());
-    let genre=document.getElementById("genre").value();
-    let rating=parseInt(document.getElementById("rating").value());
-    addMovie(title, year, genre, rating);
+  let newMovie = {
+    title: document.getElementById("title").value,
+    year: parseInt(document.getElementById("year").value),
+    genre: document.getElementById("genre").value,
+    rating: parseInt(document.getElementById("rating").value)
+  };
+  filmek.push(newMovie);
+  addMovie(newMovie);
 }
-function addMovie(title, year, genre, rating) {
+function addMovie(movie) {
   const table = document.getElementById("movieTable");
   const row = document.createElement("tr");
+
   const titleC = document.createElement("td");
-  titleC.textContent = title;
+  titleC.textContent = movie.title;
   row.appendChild(titleC);
 
   const yearC = document.createElement("td");
-  yearC.textContent = year;
+  yearC.textContent = movie.year;
   row.appendChild(yearC);
 
   const genreC = document.createElement("td");
-  genreC.textContent = genre;
+  genreC.textContent = movie.genre;
   row.appendChild(genreC);
 
   const ratingC = document.createElement("td");
-  ratingC.textContent = rating;
   let stars = "";
-  for (let i = 0; i < rating; i++) {
+  for (let i = 0; i < movie.rating; i++) {
     stars += "★";
   }
   ratingC.textContent = stars;
   row.appendChild(ratingC);
+
   table.appendChild(row);
 }
 
